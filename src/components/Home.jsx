@@ -1,31 +1,28 @@
 import logo from "../img/marvel.svg";
+import comicsImg from "../img/comics.png"
+import personaje from "../img/personaje.png"
+import serieImg from "../img/marvelStudios.png"
 import React from "react";
 import { Link } from "react-router-dom";
-import { ApiCall } from "../context/ApiCall.jsx";
 
-
-export const Home = () => {
-  ApiCall();
-
+export function Home() {
   return (
-    <div>
-      <h1 className="tittle">Marvel App</h1>
+    <div className="Home">
+      <h1 className="tittle">MARVEL APP</h1>
       <Link to="./components/Home.jsx">
         <img src={logo} alt="logo-marvel" className="App-logo" />
       </Link>
-      <div>
-        <ul>
-          <li>
-            <Link to="/Characters">Personajes</Link>
-          </li>
-          <li>
-            <Link to="/Comics">Comics</Link>
-          </li>
-          <li>
-            <Link to="/Series">Series</Link>
-          </li>
-        </ul>
+      <div className="Home-list">
+        <Link className="H-P" to="/Characters">
+        <img src={personaje} alt="personaje" className="personajeImg"></img>
+        </Link>
+        <Link className="H-P" to="/Comics">
+          <img src={comicsImg} alt="comicsImg" className="comicsImg"></img>
+          </Link>
+        <Link className="H-P" to="/Series">
+        <img src={serieImg} alt="serieImg" className="serieImg"></img>
+        </Link>
       </div>
     </div>
   );
-};
+}

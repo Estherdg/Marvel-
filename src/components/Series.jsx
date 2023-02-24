@@ -1,11 +1,12 @@
-import React from 'react'
+import React from "react";
+import { ApiCallSeries } from "../context/ApiCall.jsx";
 
-export const Series = () => {
+export function Series() {
+  ApiCallSeries("series");
+
   return (
     <div>
-      <input type="text" />
-      <button>Cosas</button>
+      <h1>Marvel Series</h1>
     </div>
-  )
+  );
 }
-
