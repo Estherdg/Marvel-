@@ -2,8 +2,16 @@ import React from "react";
 import { ApiCall } from "../context/ApiCall.jsx"
 
 export function Characters() {
-  ApiCall("characters");
-  //const characters = [];
+
+  let apiCallResults = ApiCall("characters");
+  let charactersArray = [];
+
+  apiCallResults.then((result) => {
+    result.data.results.forEach((element) => {
+      charactersArray.push(element);
+    });
+  });
+  console.log(charactersArray);
 
   return (
     <div>

@@ -2,7 +2,15 @@ import React from "react";
 import { ApiCall } from "../context/ApiCall.jsx";
 
 export function Series() {
-  ApiCall("series");
+  let apiCallResults = ApiCall("series");
+  let seriesArray = [];
+
+  apiCallResults.then((result) => {
+    result.data.results.forEach((element) => {
+      seriesArray.push(element);
+    });
+  });
+  console.log(seriesArray);
 
   return (
     <div>
