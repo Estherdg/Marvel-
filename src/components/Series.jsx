@@ -1,8 +1,8 @@
 import React from "react";
-import { ApiCallSeries } from "../context/ApiCall.jsx";
+import { ApiCall } from "../context/ApiCall.jsx";
 
 export function Series() {
-  ApiCallSeries("series");
+  ApiCall("series");
 
   return (
     <div>

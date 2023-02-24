@@ -1,8 +1,9 @@
 import React from "react";
-import { ApiCallCharapter } from "../context/ApiCall.jsx"
+import { ApiCall } from "../context/ApiCall.jsx"
 
 export function Characters() {
-  ApiCallCharapter("charapter");
+  ApiCall("characters");
+  //const characters = [];
 
   return (
     <div>
