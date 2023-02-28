@@ -1,9 +1,72 @@
 import React from "react";
-import { ApiCall } from "../context/ApiCall.jsx"
+//import { ApiCall } from "../context/ApiCall.jsx"
+import { useState, useEffect } from 'react';
 
-export function Characters() {
+  function MarvelSuperheroes() {
+    const [jsonData, setJsonData] = useState(null);
+    const urlMarvel =
+      'https://gateway.marvel.com/v1/public/characters?ts=1&apikey=5d155dab5a4be93ca92f67b208168c03&hash=0fd9b4823a201e0606416c4962039707';
+    const [showDescription, setShowDescription] = useState(false);
 
-  let apiCallResults = ApiCall("characters");
+    async function getMarvelData() {
+      try {
+        const response = await fetch(urlMarvel);
+        const data = await response.json();
+        setJsonData(data);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    useEffect(() => {
+      getMarvelData();
+    }, []);
+
+    function toggleDescription() {
+      setShowDescription(!showDescription);
+    }
+
+    return (
+      <div className="superHeroes">
+        <nav>
+          <h1>
+            Marvel Superheroes
+          </h1>
+        </nav>
+        {jsonData &&
+          jsonData.data.results.map((character) => (
+            <div className="card" key={character.id}>
+              <h2>{character.name}</h2>
+              <img
+                src={`${character.thumbnail.path}/portrait_fantastic.${character.thumbnail.extension}`}
+                alt={character.name}
+              />
+              <p>{character.description}</p>
+              {character.description && (
+                <>
+                  <button
+                    onClick={toggleDescription}
+                    className={showDescription ? 'active' : ''}
+                  >
+                    {showDescription ? 'Leer menos' : 'Leer más'}
+                  </button>
+                  {showDescription && <p>{character.description}</p>}
+                </>
+              )}
+            </div>
+          ))}
+      </div>
+    );
+  }
+
+
+  export function Characters() {
+    return <MarvelSuperheroes />;
+  }
+
+
+
+  /*let apiCallResults = ApiCall("characters");
   let charactersArray = [];
 
   apiCallResults.then((result) => {
@@ -17,5 +80,5 @@ export function Characters() {
     <div>
       <h1>Marvel Characters</h1>
     </div>
-  );
-}
+  );*/
+
