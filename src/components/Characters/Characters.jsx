@@ -1,12 +1,11 @@
 import React from "react";
-//import { ApiCall } from "../context/ApiCall.jsx"
+import CardCharacters from "../Characters/CardCharacters";
 import { useState, useEffect } from 'react';
 
   function MarvelSuperheroes() {
     const [jsonData, setJsonData] = useState(null);
     const urlMarvel =
       'https://gateway.marvel.com/v1/public/characters?ts=1&apikey=5d155dab5a4be93ca92f67b208168c03&hash=0fd9b4823a201e0606416c4962039707';
-    const [showDescription, setShowDescription] = useState(false);
 
     async function getMarvelData() {
       try {
@@ -22,10 +21,6 @@ import { useState, useEffect } from 'react';
       getMarvelData();
     }, []);
 
-    function toggleDescription() {
-      setShowDescription(!showDescription);
-    }
-
     return (
       <div className="superHeroes">
         <nav>
@@ -35,25 +30,7 @@ import { useState, useEffect } from 'react';
         </nav>
         {jsonData &&
           jsonData.data.results.map((character) => (
-            <div className="card" key={character.id}>
-              <h2>{character.name}</h2>
-              <img
-                src={`${character.thumbnail.path}/portrait_fantastic.${character.thumbnail.extension}`}
-                alt={character.name}
-              />
-              <p>{character.description}</p>
-              {character.description && (
-                <>
-                  <button
-                    onClick={toggleDescription}
-                    className={showDescription ? 'active' : ''}
-                  >
-                    {showDescription ? 'Leer menos' : 'Leer más'}
-                  </button>
-                  {showDescription && <p>{character.description}</p>}
-                </>
-              )}
-            </div>
+            <CardCharacters character={character} />
           ))}
       </div>
     );

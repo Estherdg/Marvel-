@@ -1,9 +1,9 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import { Characters } from "./Characters.jsx";
-import { Comics } from "./Comics.jsx";
+import { Characters } from "./Characters/Characters.jsx";
+import { Comics } from "./Comics/Comics.jsx";
 import { Home } from "./Home.jsx";
-import { Series } from "./Series.jsx";
+import { Series } from "./Series/Series.jsx";
 
 const Routing = () => {
   return (
