@@ -1,6 +1,8 @@
 import React from "react";
+//import ReactModal from "react-modal";
 import CardCharacters from "../Characters/CardCharacters";
 import { useState, useEffect } from 'react';
+import "./styleChar.css"
 
   function MarvelSuperheroes() {
     const [jsonData, setJsonData] = useState(null);
@@ -22,15 +24,13 @@ import { useState, useEffect } from 'react';
     }, []);
 
     return (
-      <div className="superHeroes">
-        <nav>
-          <h1>
-            Marvel Superheroes
-          </h1>
+      <div className="grid">
+        <nav className="header">
+         1
         </nav>
         {jsonData &&
           jsonData.data.results.map((character) => (
-            <CardCharacters character={character} />
+            <CardCharacters key={character.id} character={character} />
           ))}
       </div>
     );

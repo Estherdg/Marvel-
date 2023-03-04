@@ -1,9 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import CardComics from '../Comics/CardComics.jsx';
-
-//import { ApiCall } from "../context/ApiCall.jsx";
-//import Card from "../components/Card";
+import "./styleComic.css"
 
 function MarvelSuperheroes() {
   const [jsonData, setJsonData] = useState(null);
@@ -25,15 +23,13 @@ function MarvelSuperheroes() {
   }, []);
 
   return (
-    <div>
-      <nav>
-        <h1>
+    <div className="grid">
+      <nav className="header">
           Marvel Comics
-        </h1>
       </nav>
       {jsonData &&
         jsonData.data.results.map((comic) => (
-          <CardComics comic={comic} />
+          <CardComics key={comic.id} comic={comic} />
         ))}
     </div>
   );

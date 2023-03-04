@@ -1,6 +1,7 @@
 import React from "react";
 import CardSeries from "../Series/CardSeries.jsx"
 import { useState, useEffect } from 'react';
+import "./styleSerie.css"
 
 function MarvelSuperheroes() {
   const [jsonData, setJsonData] = useState(null);
@@ -22,15 +23,13 @@ function MarvelSuperheroes() {
   }, []);
 
   return (
-    <div>
+    <div className="grid">
       <nav>
-        <h1>
           Marvel Series
-        </h1>
       </nav>
       {jsonData &&
         jsonData.data.results.map((serie) => (
-          <CardSeries serie={serie} />
+          <CardSeries key={serie} serie={serie} />
         ))}
     </div>
   );
