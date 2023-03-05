@@ -1,12 +1,12 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
-import CardComics from '../Comics/CardComics.jsx';
-import "./styleComic.css"
+import React from "react";
+import { useState, useEffect } from "react";
+import CardComics from "../Comics/CardComics.jsx";
+import "./styleComic.css";
 
-function MarvelSuperheroes() {
+function MarvelComics() {
   const [jsonData, setJsonData] = useState(null);
   const urlMarvel =
-    'https://gateway.marvel.com/v1/public/comics?ts=1&apikey=5d155dab5a4be93ca92f67b208168c03&hash=0fd9b4823a201e0606416c4962039707';
+    "https://gateway.marvel.com/v1/public/comics?ts=1&apikey=5d155dab5a4be93ca92f67b208168c03&hash=0fd9b4823a201e0606416c4962039707";
 
   async function getMarvelData() {
     try {
@@ -23,10 +23,7 @@ function MarvelSuperheroes() {
   }, []);
 
   return (
-    <div className="grid">
-      <nav className="header">
-          Marvel Comics
-      </nav>
+    <div className="gridCM">
       {jsonData &&
         jsonData.data.results.map((comic) => (
           <CardComics key={comic.id} comic={comic} />
@@ -36,5 +33,5 @@ function MarvelSuperheroes() {
 }
 
 export function Comics() {
-  return <MarvelSuperheroes />;
+  return <MarvelComics />;
 }

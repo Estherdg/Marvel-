@@ -1,12 +1,12 @@
 import React from "react";
-import CardSeries from "../Series/CardSeries.jsx"
-import { useState, useEffect } from 'react';
-import "./styleSerie.css"
+import CardSeries from "../Series/CardSeries.jsx";
+import { useState, useEffect } from "react";
+import "./styleSerie.css";
 
-function MarvelSuperheroes() {
+function MarvelSeries() {
   const [jsonData, setJsonData] = useState(null);
   const urlMarvel =
-    'https://gateway.marvel.com/v1/public/series?ts=1&apikey=5d155dab5a4be93ca92f67b208168c03&hash=0fd9b4823a201e0606416c4962039707';
+    "https://gateway.marvel.com/v1/public/series?ts=1&apikey=5d155dab5a4be93ca92f67b208168c03&hash=0fd9b4823a201e0606416c4962039707";
 
   async function getMarvelData() {
     try {
@@ -23,10 +23,8 @@ function MarvelSuperheroes() {
   }, []);
 
   return (
-    <div className="grid">
-      <nav>
-          Marvel Series
-      </nav>
+    <div className="gridSR">
+      <nav></nav>
       {jsonData &&
         jsonData.data.results.map((serie) => (
           <CardSeries key={serie} serie={serie} />
@@ -36,5 +34,5 @@ function MarvelSuperheroes() {
 }
 
 export function Series() {
-  return <MarvelSuperheroes />;
+  return <MarvelSeries />;
 }

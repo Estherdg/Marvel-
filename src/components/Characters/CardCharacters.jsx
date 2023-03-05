@@ -1,6 +1,12 @@
-//import { useState } from "react";
+import { useState } from "react";
+import ModalCharacter from "./ModalCharacter.jsx";
 
 const CardCharacters = ({ character }) => {
+  const [showInfo, setShowInfo] = useState(false);
+
+  const showDetail = () => {
+    setShowInfo(!showInfo);
+  };
 
   return (
     <div className="cardCH">
@@ -8,41 +14,20 @@ const CardCharacters = ({ character }) => {
       <img
         className="charImg"
         src={`${character.thumbnail.path}/portrait_fantastic.${character.thumbnail.extension}`}
-        alt={character.title}/>
-      <p className="description">{character.description}</p>
+        alt={character.title}
+      />
+      {character.description && (
+        <>
+          <button onClick={showDetail} className={showInfo}>
+            {showInfo ? "Leer menos" : "Leer más"}
+          </button>
+          {showInfo && (
+            <ModalCharacter key={character.id} character={character} />
+          )}
+        </>
+      )}
     </div>
   );
 };
 
 export default CardCharacters;
-
-/*
-
-const [isInfo, setIsInfo] = useState(false);
-
-  const handleInfo = () => {
-    setIsInfo(!isInfo);
-  };
-
-{character.description && (
-        <>
-          <button onClick={handleInfo} className={setIsInfo ? "active" : ""}>
-            {setIsInfo ? "Leer menos" : "Leer más"}
-          </button>
-          {setIsInfo &&
-        </>
-      )}
-
- <button onClick={() => setModalIsOpen(true)}>Abrir ventana modal</button>
-
- <ReactModal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
-  <h2>Título de la ventana modal</h2>
-  <p>Contenido de la ventana modal</p>
-  <button onClick={() => setModalIsOpen(false)}>Cerrar</button>
-</ReactModal>
-
-<p className="description">{character.description}</p>
-      <button onClick={handleInfo}>
-        {isInfo ? "Cerrar Info" : "Abrir Info"}
-      </button>
-*/

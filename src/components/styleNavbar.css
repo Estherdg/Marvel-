@@ -1,0 +1,22 @@
+/* Fondo navbar */
+.navigation {
+  background-image: linear-gradient(rgb(240, 9, 9), rgb(255, 206, 206), rgb(240, 9, 9));
+  max-height: 5vw;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.nav-logo {
+  height: 25vw;
+  margin-left: -9.2vw;
+}
+
+/* Links */
+.NB {
+  color: rgb(112, 0, 0);
+  text-decoration: none;
+  font-size: 2dvw;
+  font-family: monospace;
+}

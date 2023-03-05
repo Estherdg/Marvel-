@@ -7,14 +7,12 @@ import { Series } from "./Series/Series.jsx";
 
 const Routing = () => {
   return (
-
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/Characters" element={<Characters />} />
       <Route path="/Comics" element={<Comics />} />
       <Route path="/Series" element={<Series />} />
     </Routes>
-
   );
 };
 

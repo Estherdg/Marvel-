@@ -1,44 +1,31 @@
+import { useState } from "react";
+import ModalComic from "./ModalComic.jsx";
+
 const CardComics = ({ comic }) => {
+  const [showInfo, setShowInfo] = useState(false);
+
+  const showDetail = () => {
+    setShowInfo(!showInfo);
+  };
 
   return (
     <div className="cardCM">
       <h2 className="cTitle">{comic.title}</h2>
       <img
-      className="comImg"
-      src={`${comic.thumbnail.path}/portrait_fantastic.${comic.thumbnail.extension}`}
-      alt={comic.title} />
-      <p className="description">{comic.description}</p>
+        className="comImg"
+        src={`${comic.thumbnail.path}/portrait_fantastic.${comic.thumbnail.extension}`}
+        alt={comic.title}
+      />
+      {comic.description && (
+        <>
+          <button onClick={showDetail} className={showInfo}>
+            {showInfo ? "Leer menos" : "Leer más"}
+          </button>
+          {showInfo && <ModalComic key={comic.id} comic={comic} />}
+        </>
+      )}
     </div>
   );
 };
 
 export default CardComics;
-
-
-/*
-const handleFavorite = () => {
-    setIsFavorite(!isFavorite);
-  };
-return (
-  <div>
-    <div className="card" key={comic.id}>
-          <h2>{comic.title}</h2>
-          <img
-            src={`${comic.thumbnail.path}/portrait_fantastic.${comic.thumbnail.extension}`}
-            alt={comic.title}
-          />
-          <p>{comic.description}</p>
-          {comic.description && (
-            <>
-              <button
-                onClick={toggleDescription}
-                className={showDescription ? 'active' : ''}
-              >
-                {showDescription ? 'Leer menos' : 'Leer más'}
-              </button>
-              {showDescription && <p>{comic.description}</p>}
-            </>
-          )}
-        </div>
-  </div>
-);*/
